@@ -38,3 +38,13 @@
 .button:hover{
     background-color: var(--red-light);
 }
+.circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: var(--dark-background);
+    cursor: pointer;
+}
+.circle-on{
+    background-color: var(--red);
+}

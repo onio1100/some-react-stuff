@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./main.css";
+// import { Circle } from './functions';
+const Functions = React.lazy(() => import("./Functions"))
+
 
 class TestBody extends React.Component{
     constructor(props){
@@ -8,6 +11,7 @@ class TestBody extends React.Component{
         this.state  = {
             button: 0,
             buttonText: ["CLICK ME", "YOU CLICKED ME", "YOU CLICKED ME AGAIN", "PLEAS DON'T STOP CLICKING ME"],
+            timeoutID: false,
         };
         this.buttonswitch = this.buttonswitch.bind(this);
     }
@@ -16,9 +20,21 @@ class TestBody extends React.Component{
          let newButton = this.state.button;
         if(newButton < 3){
             newButton += 1;
+            this.setState({button: newButton});
+            
+        }else{
+            if(this.state.timeoutID !== false){
+             clearTimeout(this.state.timeoutID);   
+            }
+            let ID = setTimeout(() => {
+                this.setState({
+                    button: 0,
+                    buttonText:["YOU STOPED CLICKING ME :(", "YOU CLICKED ME", "YOU CLICKED ME AGAIN", "PLEAS DON'T STOP CLICKING ME"]
+                })
+            }, 5000);
+            this.setState({timeoutID: ID});
+
         }
-        this.setState({button: newButton});
-        console.log(this.state.button);
     }
     render(){
         return(
@@ -27,6 +43,18 @@ class TestBody extends React.Component{
     }
 }
 
+function RenderStuff(){
+
+    // console.log(Functions);
+    return (
+        <div className='wraper'>
+            <TestBody />
+            {/* <Suspense fallback={<div>Wczytywanie...</div>}> */}
+                <Functions />
+            {/* </Suspense> */}
+        </div>
+    );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<TestBody />);
+root.render(<RenderStuff />);
