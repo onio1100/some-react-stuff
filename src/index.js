@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import "./main.css";
-// import { Circle } from './functions';
-const Functions = React.lazy(() => import("./Functions"))
+import random from './random';
+const Circle = React.lazy(() => import("./Circle"));
 
 
 class TestBody extends React.Component{
@@ -44,14 +44,15 @@ class TestBody extends React.Component{
 }
 
 function RenderStuff(){
-
-    // console.log(Functions);
+    let value;
+    import("./random").then( value = "rgb(" + random(0,100) + "," + random(0,100) + "," + random(0,100) + ")");
     return (
         <div className='wraper'>
             <TestBody />
-            {/* <Suspense fallback={<div>Wczytywanie...</div>}> */}
-                <Functions />
-            {/* </Suspense> */}
+            <div className='circle' style={{backgroundColor: value}}></div>
+            <Suspense fallback={<div>Wczytywanie...</div>}>
+                <Circle />
+            </Suspense>
         </div>
     );
 }
