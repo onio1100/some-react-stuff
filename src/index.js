@@ -44,12 +44,20 @@ class TestBody extends React.Component{
 }
 
 function RenderStuff(){
-    let value;
-    import("./random").then( value = "rgb(" + random(0,100) + "," + random(0,100) + "," + random(0,100) + ")");
+    let randomNumber;
+    import("./random").then(randomNumber = random);
+    function randomColor () {
+        return "rgb(" + randomNumber(0,255) + "," + randomNumber(0,255) + "," + randomNumber(0,255) + ")"
+    };
+    console.log(randomColor());
+    function changeColor(e){
+        e.target.style.backgroundColor = randomColor();
+    };
+
     return (
         <div className='wraper'>
             <TestBody />
-            <div className='circle' style={{backgroundColor: value}}></div>
+            <div className='circle right' style={{backgroundColor: randomColor()}} onClick={changeColor}></div>
             <Suspense fallback={<div>Wczytywanie...</div>}>
                 <Circle />
             </Suspense>
