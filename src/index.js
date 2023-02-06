@@ -5,40 +5,35 @@ import random from './random';
 const Circle = React.lazy(() => import("./Circle"));
 
 
-class TestBody extends React.Component{
+
+class Nose extends React.Component {
     constructor(props){
         super(props);
-        this.state  = {
-            button: 0,
-            buttonText: ["CLICK ME", "YOU CLICKED ME", "YOU CLICKED ME AGAIN", "PLEAS DON'T STOP CLICKING ME"],
-            timeoutID: false,
+        this.state = {
+            noseAngel: 0,
         };
-        this.buttonswitch = this.buttonswitch.bind(this);
+        this.noseFlip = this.noseFlip.bind(this);
+    }
+    noseFlip(){
+        this.setState({
+            noseAngel: this.state.noseAngel + 360,
+        })
     }
 
-    buttonswitch() {
-         let newButton = this.state.button;
-        if(newButton < 3){
-            newButton += 1;
-            this.setState({button: newButton});
-            
-        }else{
-            if(this.state.timeoutID !== false){
-             clearTimeout(this.state.timeoutID);   
-            }
-            let ID = setTimeout(() => {
-                this.setState({
-                    button: 0,
-                    buttonText:["YOU STOPED CLICKING ME :(", "YOU CLICKED ME", "YOU CLICKED ME AGAIN", "PLEAS DON'T STOP CLICKING ME"]
-                })
-            }, 5000);
-            this.setState({timeoutID: ID});
-
-        }
-    }
     render(){
         return(
-            <div className='button' onClick={this.buttonswitch}>{this.state.buttonText[this.state.button]}</div>
+            <div className='nose' onClick={this.noseFlip} style={{transform: `rotate(${this.state.noseAngel}deg)`}}></div>
+        )
+    }
+}
+
+class TestBody extends React.Component{
+
+    render(){
+        return(
+            <div className='button' onClick={this.buttonswitch}>
+                <Nose></Nose>
+            </div>
         )
     }
 }

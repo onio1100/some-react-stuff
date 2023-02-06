@@ -44,9 +44,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.button:hover{
+/* .button:hover{
     background-color: var(--red-light);
-}
+} */
 .circle{
     width: 200px;
     height: 200px;
@@ -75,4 +75,11 @@
 }
 .right{
     left: 80%;
+}
+.nose{
+    width: 100px;
+    height: 100px;
+    background-color: var(--light-main);
+    transition: 0.4s;
+    clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
 }
