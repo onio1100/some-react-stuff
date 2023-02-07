@@ -5,6 +5,28 @@ import random from './random';
 const Circle = React.lazy(() => import("./Circle"));
 
 
+class Mouth extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            mouthOpen: false,
+        }
+        this.opneMouth = this.opneMouth.bind(this);
+    }
+
+    opneMouth(){
+        this.setState({
+            mouthOpen: this.state.mouthOpen ? false : true,
+        })
+    }
+
+    render(){
+
+        return(
+            <div className={this.state.mouthOpen ? "mouth-on mouth" : "mouth"} onClick={this.opneMouth}></div>
+        )
+    }
+}
 
 class Nose extends React.Component {
     constructor(props){
@@ -33,6 +55,7 @@ class TestBody extends React.Component{
         return(
             <div className='button' onClick={this.buttonswitch}>
                 <Nose></Nose>
+                <Mouth></Mouth>
             </div>
         )
     }
