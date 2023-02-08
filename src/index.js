@@ -38,7 +38,7 @@ class Nose extends React.Component {
     }
     noseFlip(){
         this.setState({
-            noseAngel: this.state.noseAngel + 360,
+            noseAngel: this.state.noseAngel + 180,
         })
     }
 
@@ -82,6 +82,8 @@ function RenderStuff(){
         </div>
     );
 }
+
+// koncept zmienić to w taki builder gdzie postaci gdzie można zmienić strzałkami wygląd części w sumie mozna łato zmieniając kalsy
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RenderStuff />);
