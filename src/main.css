@@ -76,7 +76,35 @@
 .right{
     left: 80%;
 }
-.nose{
+/* arrows */
+.arrow-off{
+    user-select: none;
+    pointer-events: none;
+    transition: 0.2s;
+}
+.arrow{
+    height: 50px;
+    width: 50px;
+    background-color: #000;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    position: absolute;
+    transition: 0.2s;
+}
+.arrow:hover{
+    background-color: darkslategrey;
+}
+.a-left{
+    top: 50%;
+    left: 1%;
+    transform: translate(0%, -50%) rotate(180deg);
+}
+.a-right{
+    top: 50%;
+    right: 1%;
+    transform: translate(0%, -50%);
+}
+/* noses */
+.nose-0{
     width: 100px;
     height: 100px;
     background-color: #00000015;
@@ -85,6 +113,36 @@
     border-radius: 0 0 50% 50%;
     border: 2px solid #0000006c;
 }
+.fliped{
+    transform: rotate(180deg);
+}
+.nose-square{
+    width: 75px;
+    height: 75px;
+    background-color: #00000015;
+    border: 2px solid #0000006c;
+    transition: 0.4s;
+}
+.round {
+    border-radius: 50%;
+}
+.nose-oval{
+    width: 75px;
+    height: 100px;
+    background-color: #00000015;
+    border: 2px solid #0000006c;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+.nose-hex{
+    width: 100px;
+    height: 100px;
+    background-color: #00000015;
+    transition: 0.4s;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    border-bottom: 2px solid #0000006c;
+}
+/* mouth */
 .mouth{
     width: 250px;
     height: 50px;

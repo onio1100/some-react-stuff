@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Fragment, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import "./main.css";
 import random from './random';
@@ -32,19 +32,40 @@ class Nose extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            noseAngel: 0,
+            arrowsState: false,
+            selectedClass: 0,
+            classList: ["nose-0", "nose-0 fliped", "nose-square", "nose-square round", "nose-oval", "nose-hex"],
         };
-        this.noseFlip = this.noseFlip.bind(this);
+        this.turnArrowsOn= this.turnArrowsOn.bind(this);
+        this.changeIndex = this.changeIndex.bind(this);
     }
-    noseFlip(){
+    
+    turnArrowsOn(){
         this.setState({
-            noseAngel: this.state.noseAngel + 180,
+            arrowsState: this.state.arrowsState ? false : true,
+        });
+    };
+
+    changeIndex(direction){
+        let newIndex = this.state.selectedClass + direction;
+        if(newIndex + 1 > this.state.classList.length){
+            newIndex = 0;
+        }
+        if(newIndex < 0){
+            newIndex = this.state.classList.length - 1;
+        }
+        this.setState({
+            selectedClass: newIndex,
         })
     }
 
     render(){
         return(
-            <div className='nose' onClick={this.noseFlip} style={{transform: `rotate(${this.state.noseAngel}deg)`}}></div>
+            <Fragment>
+                <div className={this.state.classList[this.state.selectedClass]} onClick={this.turnArrowsOn}></div>
+                <div className={this.state.arrowsState ? 'arrow a-left' : 'arrow-off a-left'} onClick={() => this.changeIndex(-1)}></div>
+                <div className={this.state.arrowsState ? 'arrow a-right' : 'arrow-off a-right'} onClick={() => this.changeIndex(1)}></div>      
+            </Fragment>
         )
     }
 }
