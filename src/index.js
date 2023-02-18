@@ -9,21 +9,41 @@ class Mouth extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            mouthOpen: false,
-        }
-        this.opneMouth = this.opneMouth.bind(this);
+            arrowsState: false,
+            selectedClass: 0,
+            classList: ["mouth-0","mouth-1", "mouth-2", "mouth-3"]
+        };
+        this.showArrows = this.showArrows.bind(this);
+        this.changeIndex = this.changeIndex.bind(this);
     }
 
-    opneMouth(){
+    showArrows(){
         this.setState({
-            mouthOpen: this.state.mouthOpen ? false : true,
+            arrowsState: this.state.arrowsState ? false : true,
+        })
+    }
+
+    changeIndex(direction){
+        let newIndex = this.state.selectedClass + direction;
+        if(newIndex + 1 > this.state.classList.length){
+            newIndex = 0;
+        }
+        if(newIndex < 0){
+            newIndex = this.state.classList.length - 1;
+        }
+        this.setState({
+            selectedClass: newIndex,
         })
     }
 
     render(){
 
         return(
-            <div className={this.state.mouthOpen ? "mouth-on mouth" : "mouth"} onClick={this.opneMouth}></div>
+            <Fragment>
+                <div className={this.state.classList[this.state.selectedClass]} onClick={this.showArrows}></div>
+                <div className={this.state.arrowsState ? 'arrow am-left' : 'arrow-off am-left'} onClick={() => this.changeIndex(-1)}></div>
+                <div className={this.state.arrowsState ? 'arrow am-right' : 'arrow-off am-right'} onClick={() => this.changeIndex(1)}></div>
+            </Fragment>
         )
     }
 }
@@ -34,7 +54,7 @@ class Nose extends React.Component {
         this.state = {
             arrowsState: false,
             selectedClass: 0,
-            classList: ["nose-0", "nose-0 fliped", "nose-square", "nose-square round", "nose-oval", "nose-hex"],
+            classList: ["nose-0", "nose-0 fliped", "nose-1","nose-2","nose-2 fliped","nose-1 round", "nose-3", "nose-4"],
         };
         this.turnArrowsOn= this.turnArrowsOn.bind(this);
         this.changeIndex = this.changeIndex.bind(this);

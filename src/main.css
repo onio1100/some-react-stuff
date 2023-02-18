@@ -103,6 +103,16 @@
     right: 1%;
     transform: translate(0%, -50%);
 }
+.am-left{
+    top: 85%;
+    left: 1%;
+    transform: translate(0%, -50%) rotate(180deg);
+}
+.am-right{
+    top: 85%;
+    right: 1%;
+    transform: translate(0%, -50%);
+}
 /* noses */
 .nose-0{
     width: 100px;
@@ -116,17 +126,25 @@
 .fliped{
     transform: rotate(180deg);
 }
-.nose-square{
+.nose-1{
     width: 75px;
     height: 75px;
     background-color: #00000015;
     border: 2px solid #0000006c;
     transition: 0.4s;
 }
+.nose-2{
+    width: 100px;
+    height: 100px;
+    background-color: #00000015;
+    border: 2px solid #0000006c;
+    transition: 0.4s;
+    border-radius: 50% 50% 0 0;
+}
 .round {
     border-radius: 50%;
 }
-.nose-oval{
+.nose-3{
     width: 75px;
     height: 100px;
     background-color: #00000015;
@@ -134,7 +152,7 @@
     border-radius: 50%;
     transition: 0.4s;
 }
-.nose-hex{
+.nose-4{
     width: 100px;
     height: 100px;
     background-color: #00000015;
@@ -143,7 +161,7 @@
     border-bottom: 2px solid #0000006c;
 }
 /* mouth */
-.mouth{
+.mouth-0{
     width: 250px;
     height: 50px;
     background-color: #00000015;
@@ -155,7 +173,7 @@
     transition: 0.3s;
     border: 2px solid #0000006c;
 }
-.mouth::before{
+.mouth-0::before{
     content: "";
     position: absolute;
     top: 50%;
@@ -165,13 +183,20 @@
     transform: translate(-50%, -50%);
     background-color: #0000006c;
 }
-.mouth-on{
+.mouth-1{
+    width: 250px;
     height: 100px;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    position: absolute;
+    background-color: #00000015;
     border-radius: 0 0 50% 50%;
     background-color: #000;
     border: none;
+    transition: 0.3s;
 }
-.mouth-on::after{
+.mouth-1::after{
     content: "";
     height: 25px;
     width: 30px;
@@ -181,12 +206,55 @@
     transform: translate(-50%, 0);
     background-color: #fff;
 }
-.mouth-on::before{
+.mouth-1::before{
     content: "";
     height: 25px;
     width: 30px;
     position: absolute;
     top: 0;
+    left: 60%;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+}
+.mouth-2{
+    width: 250px;
+    height: 75px;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    position: absolute;
+    background-color: #00000015;
+    border-radius: 50% 50% 0 0;
+    background-color: #000;
+    border: none;
+    transition: 0.3s;
+}
+.mouth-3{
+    width: 250px;
+    height: 5px;
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    transition: 0.3s;
+    background-color: #0000006c;
+}
+.mouth-3::after{
+    content: "";
+    height: 25px;
+    width: 30px;
+    position: absolute;
+    top: 5px;
+    left: 40%;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+}
+.mouth-3::before{
+    content: "";
+    height: 25px;
+    width: 30px;
+    position: absolute;
+    top: 5px;
     left: 60%;
     transform: translate(-50%, 0);
     background-color: #fff;
